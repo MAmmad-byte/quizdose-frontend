@@ -7,7 +7,7 @@ const innerBoxStyles = {
   }
   export default function ShadowBox({children, style}) {
   return (
-    <Box bg='#3ca094' {...style} p="6" boxShadow='xl'  sx={innerBoxStyles}  borderRadius={10}  backdropBlur='8px'>{children}</Box>
+    <Box bg='#3ca094'  p="6" boxShadow='xl'  sx={innerBoxStyles}  borderRadius={10}  backdropBlur='8px' {...style}>{children}</Box>
   )
 }
 // pt={10} pb={10}

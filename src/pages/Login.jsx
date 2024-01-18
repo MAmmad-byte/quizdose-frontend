@@ -1,5 +1,5 @@
-import { Box, Button, Heading, SkeletonText, background } from "@chakra-ui/react";
-import React from "react";
+import { Box, Button, Heading, SkeletonText, Text, background } from "@chakra-ui/react";
+import React, { useState } from "react";
 import PageLayout from "../components/PageLayout";
 import bg from "../assets/images/bg_quiz.jpg";
 import ShadowBox from "../components/ShadowBox";
@@ -7,7 +7,8 @@ import FormInput from "../components/form/FormInput";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
-import authServices from "../services/authServices";
+import userServices from "../services/userServices";
+import { saveUser } from "../services/authServices";
 
 const userSchema = z.object({
     email: z.string().email(),
@@ -16,7 +17,7 @@ const userSchema = z.object({
 
 
 export default function Login() {
-
+    const [resError, setResError] = useState("")
     const { register, handleSubmit , formState: { errors }} = useForm({
         resolver: zodResolver(userSchema),
         defaultValues:{
@@ -26,15 +27,12 @@ export default function Login() {
       })
 
 async function onSubmit(data){
-    try {
-        
-        const response  = await authServices.login(data)
-    } catch (error) {
-        
-        console.log(error.message)
-        console.log("ssss")
-    }
-        
+    try {   
+        const response  = await userServices.login({email:data.email, password:data.password})
+        saveUser(response.data)
+    } catch (error) { 
+        setResError(error.response.data)
+    }   
 }
 
   return (
@@ -56,6 +54,7 @@ async function onSubmit(data){
             <Heading as="h2" size="lg" color="#ffb409">
               Welcome back
             </Heading>
+            {resError &&<Text color={"#ff9c9c"}>{resError}</Text>}
             <form onSubmit={handleSubmit(onSubmit)} action="" method="post">
                 <FormInput errors={errors} label={"Email"} name={"email"} register={register} placeholder={"Enter Email"} type={"email"} />
                 <FormInput errors={errors} label={"Password"} name={"password"} register={register} placeholder={"Enter Password"} type={"password"} />

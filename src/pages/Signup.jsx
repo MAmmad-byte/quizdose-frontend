@@ -1,5 +1,5 @@
-import { Box, Button, Divider, Flex, Heading, SkeletonText, background } from "@chakra-ui/react";
-import React from "react";
+import { Box, Button, Divider, Flex, Heading, SkeletonText, Text, background } from "@chakra-ui/react";
+import React, { useState } from "react";
 import PageLayout from "../components/PageLayout";
 import bg from "../assets/images/bg_quiz.jpg";
 import ShadowBox from "../components/ShadowBox";
@@ -7,6 +7,8 @@ import FormInput from "../components/form/FormInput";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
+import userServices from "../services/userServices";
+import { saveUser } from "../services/authServices";
 
 const userSchema = z.object({
     firstName: z.string().min(3).max(55),
@@ -27,7 +29,7 @@ const userSchema = z.object({
 
 
 export default function Signup() {
-
+    const [resError, setResError] = useState("")
     const { register, handleSubmit , formState: { errors }} = useForm({
         resolver: zodResolver(userSchema),
         defaultValues:{
@@ -40,8 +42,22 @@ export default function Signup() {
       })
 
 
-      function onSubmit(data){
-        console.log(data)
+    async  function onSubmit(data){
+        try {   
+          const response  = await userServices.signup({
+            firstName:data.firstName, 
+            lastName:data.lastName,
+            email:data.email, 
+            password:data.password
+          })
+          console.log(response.data)
+          saveUser(response.data)
+          // localStorage.setItem("auth-token", response.data)
+          // window.location = "/dashboard"
+      } catch (error) { 
+        // console.log(error.response.data)
+          setResError(error.response.data)
+      } 
       }
 
 
@@ -64,6 +80,7 @@ export default function Signup() {
             <Heading as="h2" size="lg" color="#ffb409">
               Sign Up
             </Heading>
+            {resError &&<Text color={"#ff9c9c"}>{resError}</Text>}
             <form onSubmit={handleSubmit(onSubmit)} action="">
                 <Flex>
                 <FormInput errors={errors} label={"First Name"} name={"firstName"} register={register} placeholder={"Enter First Name"} type={"text"} />

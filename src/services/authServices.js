@@ -1,10 +1,4 @@
-import apiClient from "./api-Client";
-
-
-class AuthServices{
-    login(data){
-        apiClient.post("/auth",{email:data.email, password:data.password})
-    }
+export function saveUser(token){
+    localStorage.setItem('auth-token', token)
+    window.location="/dashboard"
 }
-
-export default new AuthServices;
