@@ -9,6 +9,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import Quiz from './pages/Quiz'
+import Logout from './pages/Logout'
+import CreateQuiz from './pages/CreateQuiz'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,8 +23,10 @@ function App() {
       {/* <Route element={<Home/>} path='/' /> */}
       <Route element={<Login />} path='/login' />
       <Route element={<Signup />} path='/signup' />
+      <Route element={<Logout />} path='/logout' />
       <Route element={<Dashboard />} path='/dashboard' />
       <Route element={<Quiz />} path='/quiz' />
+      <Route element={<CreateQuiz />} path='/quiz/create' />
      
     </Routes>
     {/* <Footer /> */}

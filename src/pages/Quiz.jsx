@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Button, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import PageLayout from "../components/PageLayout";
 import ShadowBox from "../components/ShadowBox";
@@ -31,11 +31,36 @@ export default function Quiz() {
             <Text>Time Left: 13s</Text>
           </Box>
           <Box padding={"0 20px"}>
-            <Text>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-              corrupti fugit totam possimus ducimus repellendus assumenda unde
-              fugiat eveniet placeat.
+            <Text fontSize={18} fontWeight={"600"} m={"20px 0"} width={"80%"}>
+              What is the capital of France?
             </Text>
+            <RadioGroup>
+              <Stack spacing={4}>
+                <Box mt={2} borderBottom={"1px solid #ffb409"}>
+                  <Radio value="1" p={"15px 10px"} width={"100%"}>
+                    <Text fontWeight={"700"}>Berlin</Text>
+                  </Radio>
+                </Box>
+                <Box mt={2} borderBottom={"1px solid #ffb409"}>
+                  <Radio value="2" p={"15px 10px"} width={"100%"}>
+                    <Text fontWeight={"700"}>Paris</Text>
+                  </Radio>
+                </Box>
+                <Box mt={2} borderBottom={"1px solid #ffb409"}>
+                  <Radio value="3" p={"15px 10px"} width={"100%"}>
+                    <Text fontWeight={"700"}>London</Text>
+                  </Radio>
+                </Box>
+                <Box mt={2} borderBottom={"1px solid #ffb409"}>
+                  <Radio value="4" p={"15px 10px"} width={"100%"}>
+                    <Text fontWeight={"700"}>Rome</Text>
+                  </Radio>
+                </Box>
+              </Stack>
+            </RadioGroup>
+            <Button bg={"#ffb409"} color={"#fff"} mt={5}>
+              Save and Next
+            </Button>
           </Box>
         </ShadowBox>
       </PageLayout>
