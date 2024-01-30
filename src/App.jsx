@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import { Box } from '@chakra-ui/react'
 import Login from './pages/Login'
@@ -10,10 +9,9 @@ import Quiz from './pages/Quiz'
 import Logout from './pages/Logout'
 import CreateQuiz from './pages/CreateQuiz'
 import Home from './pages/Home'
-import Footer from './components/footer'
+import Footer from './components/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <Box width="100%" minHeight="100vh" display="flex"  flexDirection={"column"} >
