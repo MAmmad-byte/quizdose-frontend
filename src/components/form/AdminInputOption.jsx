@@ -17,7 +17,7 @@ export default function AdminInputOption({
   const [checked, setChecked] = useState(false);
   const [optionData, setOptionData] = useState({
     correct: false,
-    name: "",
+    label: "",
   });
   return (
     <Box
@@ -27,13 +27,10 @@ export default function AdminInputOption({
       justifyContent="space-between"
     >
       <Flex width="300px">
-        <Button onClick={onClick} colorScheme="red" size={"sm"}>
-          Delete
-        </Button>
         <Checkbox
           onChange={() => {
             setChecked(!checked);
-            setValue(name, {name:optionData.name ,correct:optionData.correct});
+            setValue(name, {label:optionData.label ,correct:optionData.correct});
             setOptionData({ ...optionData, correct: checked });
           }}
           value={checked}
@@ -47,8 +44,8 @@ export default function AdminInputOption({
         type={type}
         name={name}
         onChange={(data) => {
-          setValue(name, {name: data.currentTarget.value, correct:checked});
-          setOptionData({ ...optionData, name: data.currentTarget.value });
+          setValue(name, {label: data.currentTarget.value, correct:checked});
+          setOptionData({ ...optionData, label: data.currentTarget.value });
         }}
       />
     </Box>

@@ -1,14 +1,15 @@
-import { Box, Button, Divider, Flex, Heading, SkeletonText, Text, background } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Box, Button, Divider, Flex, Heading, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import PageLayout from "../components/PageLayout";
-import bg from "../assets/images/bg_quiz.jpg";
+import bg from "../assets/images/login_bg.jpg";
 import ShadowBox from "../components/ShadowBox";
 import FormInput from "../components/form/FormInput";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import userServices from "../services/userServices";
-import { saveUser } from "../services/authServices";
+import { saveUser, validateUser } from "../services/authServices";
+import { useNavigate } from "react-router-dom";
 
 const userSchema = z.object({
     firstName: z.string().min(3).max(55),
@@ -29,6 +30,7 @@ const userSchema = z.object({
 
 
 export default function Signup() {
+  const navigate = useNavigate();
     const [resError, setResError] = useState("")
     const { register, handleSubmit , formState: { errors }} = useForm({
         resolver: zodResolver(userSchema),
@@ -59,7 +61,11 @@ export default function Signup() {
           setResError(error.response.data)
       } 
       }
-
+      useEffect(() => {
+        if(validateUser())
+          navigate("/dashboard")
+      }, [])
+      
 
   return (
     <Box
@@ -67,16 +73,16 @@ export default function Signup() {
       backgroundPosition={"center"}
       backgroundSize={"cover"}
       width="100%"
-      height={"100vh"}
+      height={"calc(100vh - 80px)"}
     >
       <PageLayout>
         <Box
           height="100%"
           display="flex"
           alignItems="center"
-          justifyContent="flex-end"
+          justifyContent={{xl:"flex-end", base:"center"}}
         >
-          <ShadowBox style={{width:"50%", background:"#3ca094"}}>
+          <ShadowBox style={{background:"#244743"}} width={{lg:"50%", base:"100%"}}>
             <Heading as="h2" size="lg" color="#ffb409">
               Sign Up
             </Heading>

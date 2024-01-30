@@ -7,3 +7,9 @@
   margin: 0 20px;
   list-style: none;
 }
+
+@media screen and (max-width:700px) {
+  .nav-list{
+    flex-direction: column;
+  }
+}

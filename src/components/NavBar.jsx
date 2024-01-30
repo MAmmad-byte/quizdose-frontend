@@ -2,10 +2,10 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdQuiz } from "react-icons/md";
-import { validateUser } from "../services/authServices";
+import { isMod, validateUser } from "../services/authServices";
 export default function NavBar() {
   return (
-    <Box width="100%" height="50px" background="#ffb409">
+    <Box width="100%" height="50px" background="#ffb409" p={"0 20px"}>
       <Box
         display="flex"
         alignItems="center"
@@ -13,34 +13,58 @@ export default function NavBar() {
         justifyContent="space-between"
         m="auto"
         height="100%"
-        // border="1px solid tomato"
         maxWidth="1400px"
       >
-        <Heading
-          display={"flex"}
-          alignItems={"center"}
-          fontSize={30}
-          color={"#fff"}
-        >
-          <MdQuiz color="#E6FFFA" size={40} />
-          Quiz dose
-        </Heading>
-        <ul className="nav-list">
+        <Link to={"/"}>
+          <Heading
+            display={"flex"}
+            alignItems={"center"}
+            fontSize={30}
+            color={"#244743"}
+            cursor={"pointer"}
+          >
+            <MdQuiz color="#244743" size={40} />
+            Quiz dose
+          </Heading>
+        </Link>
+        <ul className="nav-list" style={{ color: "#244743" }}>
           <li>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"}>
+              <Text fontWeight={700}>Home</Text>
+            </Link>
           </li>
-          <li>About</li>
           {validateUser() ? (
-            <li>
-              <Link to={"/logout"}>Logout</Link>
-            </li>
+            <>
+              <li>
+                <Link to={"/dashboard"}>
+                  <Text fontWeight={700}>Dashboard</Text>
+                </Link>
+              </li>
+
+              {isMod() && (
+                <li>
+                  <Link to={"/quiz/create"}>
+                    <Text fontWeight={700}>Create</Text>
+                  </Link>
+                </li>
+              )}
+              <li>
+                <Link to={"/logout"}>
+                  <Text fontWeight={700}>Logout</Text>
+                </Link>
+              </li>
+            </>
           ) : (
             <>
               <li>
-                <Link to={"/login"}>Login</Link>
+                <Link to={"/login"}>
+                  <Text fontWeight={700}>Login</Text>
+                </Link>
               </li>
               <li>
-                <Link to={"/signup"}>Sign up</Link>
+                <Link to={"/signup"}>
+                  <Text fontWeight={700}>Sign up</Text>
+                </Link>
               </li>
             </>
           )}

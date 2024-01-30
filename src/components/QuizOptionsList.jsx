@@ -1,12 +1,8 @@
-import React from 'react'
 import AdminInputOption from './form/AdminInputOption'
 import { useForm } from 'react-hook-form';
 
 export default function QuizOptionsList({options, onSubmit}) {
     const {
-        register,
-        handleSubmit,
-        formState: { errors },
         setValue,
       } = useForm();
     //   onSubmit(handleSubmit((data)=>console.log(data)))
