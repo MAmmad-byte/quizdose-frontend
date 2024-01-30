@@ -1,7 +1,7 @@
 import React from "react";
 import PageLayout from "../components/PageLayout";
 import { Box, Heading, Text } from "@chakra-ui/react";
-import bg from "../assets/images/HomeBG.jpg";
+import bg from "../assets/images/homeBG.jpg";
 import { Link } from "react-router-dom";
 export default function Home() {
   return (
