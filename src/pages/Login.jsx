@@ -47,7 +47,7 @@ useEffect(() => {
       backgroundPosition={"center"}
       backgroundSize={"cover"}
       width="100%"
-      height={"calc(100vh - 80px)"}
+      height={"calc(100vh - 30px)"}
     >
       <PageLayout>
         <Box

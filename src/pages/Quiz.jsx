@@ -38,7 +38,7 @@ export default function Quiz() {
   return (
     <Box
       width={"100%"}
-      height={"calc(100vh - 80px)"}
+      height={"calc(100vh - 30px)"}
       backgroundImage={bg}
       backgroundPosition={"center"}
       backgroundSize={"cover"}

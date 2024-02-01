@@ -1,7 +1,7 @@
 import './App.css'
 import { Box } from '@chakra-ui/react'
 import Login from './pages/Login'
-import NavBar from './components/NavBar'
+// import NavBar from './components/NavBar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
@@ -10,6 +10,7 @@ import Logout from './pages/Logout'
 import CreateQuiz from './pages/CreateQuiz'
 import Home from './pages/Home'
 import Footer from './components/Footer'
+import NavigationBar from './components/NavigationBar'
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
     <Box width="100%" minHeight="100vh" display="flex"  flexDirection={"column"} >
 
     <BrowserRouter>
-    <NavBar />
+    <NavigationBar />
     <Routes>
       <Route element={<Home/>} path='/' />
       <Route element={<Login />} path='/login' />

@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Box
       width={"100%"}
-      height={"calc(100vh - 80px)"}
+      height={"calc(100vh - 30px)"}
       backgroundImage={bg}
       backgroundSize={"cover"}
       backgroundPosition={"center"}

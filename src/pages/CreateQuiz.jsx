@@ -29,7 +29,7 @@ export default function CreateQuiz() {
     // after that it must be redirect to quiz list page. 
   }
   return (
-    <Box width="100%" minHeight={"calc(100vh - 80px)"} bg={"#244743"}>
+    <Box width="100%" minHeight={"calc(100vh - 30px)"} pt={70} pb={10} bg={"#244743"}>
       <PageLayout >
         <ShadowBox style={{backgroundColor:"#244743"}}>
           <Heading>Create Quiz</Heading>

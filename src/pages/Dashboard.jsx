@@ -36,7 +36,7 @@ export default function Dashboard() {
 
   }
   return (
-    <Box minHeight={"calc(100vh - 80px)"} display={"flex"} alignItems={"center"} justifyContent={"center"} width="100%" bg={"#244743"} >
+    <Box minHeight={"calc(100vh - 30px)"} display={"flex"} pt={70} pb={10} alignItems={"center"} justifyContent={"center"} width="100%" bg={"#244743"} >
         <PageLayout styles={{
           width:"100%"
         }}>
