@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import userServices from "../services/userServices";
 import { saveUser, validateUser } from "../services/authServices";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 
 const userSchema = z.object({
     firstName: z.string().min(3).max(55),
@@ -32,6 +33,7 @@ const userSchema = z.object({
 export default function Signup() {
   const navigate = useNavigate();
     const [resError, setResError] = useState("")
+    const [loader, setLoader] = useState(false)
     const { register, handleSubmit , formState: { errors }} = useForm({
         resolver: zodResolver(userSchema),
         defaultValues:{
@@ -46,6 +48,7 @@ export default function Signup() {
 
     async  function onSubmit(data){
         try {   
+          setLoader(true)
           const response  = await userServices.signup({
             firstName:data.firstName, 
             lastName:data.lastName,
@@ -54,11 +57,13 @@ export default function Signup() {
           })
           console.log(response.data)
           saveUser(response.data)
+          setLoader(false)
           // localStorage.setItem("auth-token", response.data)
           // window.location = "/dashboard"
       } catch (error) { 
         // console.log(error.response.data)
           setResError(error.response.data)
+          setLoader(false)
       } 
       }
       useEffect(() => {
@@ -75,6 +80,7 @@ export default function Signup() {
       width="100%"
       height={"calc(100vh - 30px)"}
     >
+      {loader && <Loading />}
       <PageLayout>
         <Box
           height="100%"

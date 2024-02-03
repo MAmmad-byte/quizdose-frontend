@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import userServices from "../services/userServices";
 import { saveUser, validateUser } from "../services/authServices";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 
 const userSchema = z.object({
     email: z.string().email(),
@@ -20,6 +21,7 @@ const userSchema = z.object({
 export default function Login() {
   const navigate = useNavigate();
     const [resError, setResError] = useState("")
+    const [loader, setLoader] = useState(false)
     const { register, handleSubmit , formState: { errors }} = useForm({
         resolver: zodResolver(userSchema),
         defaultValues:{
@@ -30,10 +32,13 @@ export default function Login() {
 
 async function onSubmit(data){
     try {   
+      setLoader(true)
         const response  = await userServices.login({email:data.email, password:data.password})
         saveUser(response.data)
-    } catch (error) { 
+        setLoader(false)
+      } catch (error) { 
         setResError(error.response.data)
+        setLoader(false)
     }   
 }
 useEffect(() => {
@@ -49,6 +54,7 @@ useEffect(() => {
       width="100%"
       height={"calc(100vh - 30px)"}
     >
+      {loader && <Loading />}
       <PageLayout>
         <Box
           height="100%"

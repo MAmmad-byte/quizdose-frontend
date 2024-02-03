@@ -1,8 +1,9 @@
 import React from "react";
 import PageLayout from "../components/PageLayout";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Spinner, Text } from "@chakra-ui/react";
 import bg from "../assets/images/homeBG.jpg";
 import { Link } from "react-router-dom";
+import Loading from "../components/Loading";
 export default function Home() {
   return (
     <Box
@@ -12,6 +13,7 @@ export default function Home() {
       backgroundSize={"cover"}
       backgroundPosition={"center"}
       backgroundRepeat={"no-repeat"}
+      position={"relative"}
     >
       <PageLayout
         styles={{
@@ -31,15 +33,27 @@ export default function Home() {
           </Heading>
           <Heading as={"h6"} fontSize={15} mt={10} color={"#38A169"}>
             <Link to={"/signup"}>
-              <Text fontWeight={700} fontSize={18} _hover={{ color: "#ffb409" }} display={"inline-block"}>
+              <Text
+                fontWeight={700}
+                fontSize={18}
+                _hover={{ color: "#ffb409" }}
+                display={"inline-block"}
+              >
                 Sign up
               </Text>
             </Link>{" "}
-            or <Link to={"/login"}>
-              <Text fontWeight={700} fontSize={18} _hover={{ color: "#ffb409" }} display={"inline-block"}>
+            or{" "}
+            <Link to={"/login"}>
+              <Text
+                fontWeight={700}
+                fontSize={18}
+                _hover={{ color: "#ffb409" }}
+                display={"inline-block"}
+              >
                 log in
               </Text>
-            </Link> for brain-teasing fun. Let the quiz journey begin!
+            </Link>{" "}
+            for brain-teasing fun. Let the quiz journey begin!
           </Heading>
         </Box>
       </PageLayout>
