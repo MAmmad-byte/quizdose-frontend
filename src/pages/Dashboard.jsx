@@ -52,13 +52,13 @@ export default function Dashboard() {
           <Heading as={"h2"}>WelCome, {user.firstName}</Heading>
           <Flex mt={10} alignItems={"center"} justifyContent={"start"}>
             <ShadowBox style={{ backgroundColor: "#244743" }}>
-              { loading ?<SkeletonText height={"30px"} noOfLines={1} width={150} />:
+              { loading ?<SkeletonText height={"30px"} noOfLines={1} width={"80px"} />:
               <Text color={"#ffb409"} fontSize={20}>
                 Total Attempt: {result.length}
               </Text>}
             </ShadowBox>
             <ShadowBox style={{ marginLeft: "20px", bg: "#ffb409" }}>
-            { loading ?<SkeletonText speed={"0.1s"} height={"30px"} noOfLines={1} width={150} />:
+            { loading ?<SkeletonText speed={"0.1s"} height={"30px"} noOfLines={1} width={"80px"} />:
               <Text fontSize={20}>
                 Total Score: {total.obtain}/{total.total}
               </Text>}
