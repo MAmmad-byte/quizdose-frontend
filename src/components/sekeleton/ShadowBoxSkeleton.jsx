@@ -13,7 +13,7 @@ export default function ShadowBoxSkeleton() {
         backgroundColor: "#244743",
       }}
     >
-      <Skeleton speed={"0.1s"} width={"50%"} noOfLines={1}  height='20px'></Skeleton>
+      <Skeleton speed={"0.2s"} width={"50%"} noOfLines={1}  height='20px'></Skeleton>
 
     </ShadowBox>
   );
