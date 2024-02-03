@@ -6,7 +6,7 @@ import { getUserInfo, validateUser } from "../services/authServices";
 import { fetchOpenQuizList } from "../services/quizServices";
 import { Link } from "react-router-dom";
 import { fetchResult } from "../services/resultServices";
-import ShadowBoxSkeleton from "../components/sekeleton/shadowBoxSkeleton";
+import ShadowBoxSkeleton from "../components/sekeleton/ShadowBoxSkeleton";
 
 const total = { obtain: 0, total: 0 };
 export default function Dashboard() {
