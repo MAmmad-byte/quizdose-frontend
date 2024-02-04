@@ -12,7 +12,7 @@ export default function Footer() {
       backgroundColor={"#ffb409"}
     >
         <Box pt={1} maxWidth={1400} m={"auto"} display={"flex"} alignItems={"center"} justifyContent={"center"}>
-          <Text color={"#9b6c00"} fontWeight={600} pr={3} borderRight={"2px solid"}>Created by Ammad</Text>
+          <Text color={"#9b6c00"} fontWeight={600} pr={3} borderRight={"2px solid"}>Developed by Ammad</Text>
           <Box display={"flex"}>
             <Link
             style={{marginLeft:"10px"}}
