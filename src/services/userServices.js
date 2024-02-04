@@ -1,4 +1,5 @@
 import apiClient from "./api-Client";
+import { getAuthToken } from "./authServices";
 
 class UserServices {
   login(data) {
@@ -15,6 +16,13 @@ class UserServices {
       email: data.email,
       password: data.password,
     });
+  }
+  fetchAllUsers(){
+    return apiClient.get("/users",{
+      headers:{
+        auth:getAuthToken()
+      }
+    })
   }
 }
 

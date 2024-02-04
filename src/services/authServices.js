@@ -33,9 +33,13 @@ export function validateUser(){
 }
 export function isMod(){
         let token = localStorage.getItem("auth-token")
-        let decode = jwtDecode(token)
-        if(decode.role.isModerator || decode.role.isAdmin)
+        if(token){
+            let decode = jwtDecode(token)
+            if(decode.role.isModerator || decode.role.isAdmin)
             return true;
         else    
-            return false;
+        return false;
+    }else
+        return false;
+
 }

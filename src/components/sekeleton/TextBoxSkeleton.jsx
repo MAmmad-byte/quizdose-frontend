@@ -1,8 +1,8 @@
 import React from "react";
 import ShadowBox from "../ShadowBox";
-import { Skeleton } from "@chakra-ui/react";
+import { SkeletonText,} from "@chakra-ui/react";
 
-export default function ShadowBoxSkeleton() {
+export default function TextBoxSkeleton({noOfLines=2}) {
   return (
     <ShadowBox
       style={{
@@ -13,7 +13,7 @@ export default function ShadowBoxSkeleton() {
         backgroundColor: "#244743",
       }}
     >
-      <Skeleton speed={"0.2s"} width={"50%"} noOfLines={1}  height='20px'></Skeleton>
+      <SkeletonText fontSize={"40px"} noOfLines={noOfLines}>Lorem, ipsum.</SkeletonText>
 
     </ShadowBox>
   );

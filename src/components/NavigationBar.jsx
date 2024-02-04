@@ -43,7 +43,7 @@ export default function NavigationBar() {
         Dashboard
       </NavigationLink>
 
-          {isMod() && (
+          {isMod() && (<>
             <NavigationLink
             color="#244743"
             hoverColor={"#f3a900"}
@@ -52,7 +52,17 @@ export default function NavigationBar() {
           >
             Create
           </NavigationLink>
-          )}
+          <NavigationLink
+          color="#244743"
+          hoverColor={"#f3a900"}
+          to={"/admin/users"}
+          menuOpen={setMenu}
+        >
+          Users
+        </NavigationLink>
+        </>
+          )
+          }
           <NavigationLink
         color="#244743"
         hoverColor={"#f3a900"}

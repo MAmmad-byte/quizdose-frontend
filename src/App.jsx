@@ -11,6 +11,7 @@ import CreateQuiz from './pages/CreateQuiz'
 import Home from './pages/Home'
 import Footer from './components/Footer'
 import NavigationBar from './components/NavigationBar'
+import Users from './pages/Users'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <Route element={<Dashboard />} path='/dashboard' />
       <Route element={<Quiz />} path='/user/quiz/:id' />
       <Route element={<CreateQuiz />} path='/quiz/create' />
+      <Route element={<Users />} path='/admin/users' />
      
     </Routes>
     <Footer />
